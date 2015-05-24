@@ -132,13 +132,19 @@ switch ($type) {
                 foreach($setting_ids as $setting_id) {
                     $questObj->insertQuesSetting($ques_id, $setting_id);
                 }
-                echo json_encode(array("code" => "0", "log" => "Questionnaire created"));
+                echo json_encode(array("code" => "0", "log" => "Questionnaire created", "ques_id" => $ques_id));
             } else {
+                $userObj->deleteUser($userID);
                 echo json_encode(array("code" => "-1", "log" => "Questionnaire already present"));
             }            
         } else {
             echo json_encode(array("code" => "-1", "log" => "User exists"));
         }
+        break;
+        
+    case "logout":
+        session_start();
+        session_destroy();
         break;
         
     default: 
