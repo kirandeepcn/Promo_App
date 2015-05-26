@@ -108,7 +108,7 @@ switch ($type) {
         $password = isset($_POST['password']) ? $_POST['password'] : "";
         $allowexport = isset($_POST['allowexport']) ? $_POST['allowexport'] : "";
         $allowimport = isset($_POST['allowimport']) ? $_POST['allowimport'] : "";
-       
+        $setting_ids = array();
         if ($question == "" || $username == "" || $password == "") {
             echo json_encode(array("code" => "-1", "log" => "Some fields are missing"));
             exit();
